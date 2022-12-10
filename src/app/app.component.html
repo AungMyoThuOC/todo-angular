@@ -1,0 +1,43 @@
+<div class="main">
+  <h1>Todo list App</h1>
+
+  <div class="search">
+    <input type="text" placeholder="Add Todo">
+    <span><i class="fas fa-plus"></i></span>
+  </div>
+
+  <div *ngIf="taskAllComplete">
+    <p>
+      All task are complete
+    </p>
+  </div>
+  <!-- <div>
+    <div *ngFor="let todo of todolist">
+      <div (dbclick)="completeTask(todo.id)">
+        <i 
+                class="fa-regular text-white cursor-pointer"
+                [ngClass]="{'fa-circle-check fa-solid ': todo.complete, 'fa-circle': !todo.complete}"
+                (click)="completeTask(todo.id)"
+                ></i>
+        <p [ngClass]="{'line-through': todo.complete}" >
+          {{todo.label}}
+        </p>
+        <i class="fas fa-trash-alt"></i>
+      </div>
+    </div>
+  </div> -->
+  <ul *ngFor="let todo of todolist">
+    <li (dbclick)="completeTask(todo.id)">
+      <p [ngClass]="{'line-through': todo.complete}" >
+        {{todo.label}}
+      </p>
+      <i 
+      class="fa-regular text-white cursor-pointer"
+      [ngClass]="{'fa-circle-check fa-solid ': todo.complete, 'fa-circle': !todo.complete}"
+      (click)="completeTask(todo.id)"
+      ></i>
+    </li>
+  </ul>
+</div>
+
+<router-outlet></router-outlet>
